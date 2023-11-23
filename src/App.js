@@ -1,11 +1,15 @@
-function App() {
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Landing from './pages/Landing';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        bdjabsk
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Landing/>} ></Route>
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
