@@ -1,0 +1,15 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    align-content: center;
+}
+
+.text-xl{
+    font-family: 'Courier New', Courier, monospace;
+    color: blue;
+    align-content: center;
+}
+
+loginButton {
+    font-family: 'Courier New', Courier, monospace;
+    color: blue;
+}
