@@ -12,7 +12,7 @@ const headerStyle = {
   backgroundSize: 'cover',
   imageRendering: 'pixelated',
   fontSize: '30px',
-  height: '100px',
+  height: '92px',
 };
 
 const contentStyle = {
@@ -38,20 +38,27 @@ const footerStyle = {
 };
 
 const formStyle = {
-  width: '400px',
+  width: '500px',
   boxShadow: '0 4px 8px rgba(255, 255, 255, 255, 0.1)',
   padding: '30px',
   borderRadius: '8px',
   backgroundColor: 'rgba(90, 90, 90, 0.95)',
 };
 
-function Login() {
+function Registration() {
   return (
     <div>
       <Layout>
         <Header style={headerStyle}>We Bare Bears</Header>
         <Content style={contentStyle}>
+          <h1 style={{ color: '#fff' }}>Create Your Account</h1>
           <Form style={formStyle}>
+            <Form.Item
+              label="Valid Email"
+              name="email"
+              rules={[{ required: true, message: 'Please input your Email Address!' }]}>
+              <Input size="large" />
+            </Form.Item>
             <Form.Item
               label="Username"
               name="username"
@@ -64,7 +71,13 @@ function Login() {
               rules={[{ required: true, message: 'Please input your password!' }]}>
               <Input.Password size="large" />
             </Form.Item>
-            <Form.Item style={{ display: 'flex', justifyContent: 'center', fontSize: '30px' }}>
+            <Form.Item
+              label="Confirm Password"
+              name="passwordConfimation"
+              rules={[{ required: true, message: 'Please input your password!' }]}>
+              <Input.Password size="large" />
+            </Form.Item>
+            <Form.Item style={{ display: 'flex', justifyContent: 'center' }}>
               <Button ghost size="large" style={{ width: '150px', marginRight: '10px', color: '#000', borderColor: '#000' }}>
                 Log In
               </Button>
@@ -80,4 +93,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Registration;
