@@ -1,7 +1,7 @@
-// ReservationConfirmation.js
 import React, { useState } from 'react';
 import { ReservationDetails } from '../component/ReservationDetails';
 import ReservationPriceCalculator from '../component/ReservationPriceCalculator';
+import UniqueIDGenerator from '../component/UniqueIDGenerator';
 
 const ReservationConfirmation = () => {
   // Destructure values from ReservationDetails
@@ -9,6 +9,9 @@ const ReservationConfirmation = () => {
 
   // State to track senior citizen status
   const [seniorCitizenStatus, setSeniorCitizenStatus] = useState(Array(seatNumbers.length).fill(false));
+
+  // State to store total price
+  const [totalPrice, setTotalPrice] = useState(0);
 
   // Handle button click for a seat
   const handleSeatButtonClick = (seatIndex) => {
@@ -19,18 +22,55 @@ const ReservationConfirmation = () => {
     setSeniorCitizenStatus(updatedStatus);
   };
 
+  // Function to calculate total price
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+
+    seatNumbers.forEach((seat, index) => {
+      const ticketPrice = isPremium ? 500 : 350;
+      const discountedPrice = seniorCitizenStatus[index] ? ticketPrice * 0.8 : ticketPrice;
+
+      totalPrice += discountedPrice;
+    });
+
+    return totalPrice;
+  };
+
+  // Function to generate a reservation
+  // Function to generate a reservation
+const generateReservation = () => {
+  const reservationNumber = UniqueIDGenerator.generateReservationID(date);
+
+  // Create an array to store seat and ticket information
+  const seatInfo = seatNumbers.map((seat, index) => {
+    const ticketNumber = UniqueIDGenerator.generateTicketID(cinemaNumber, date);
+    return { seatNumber: seat.seatNumber, ticketNumber };
+  });
+
+  // Display a prettified message box
+  window.alert(`
+    Reservation Details:
+    Reservation Number: ${reservationNumber}
+    Movie Name: ${movieName}
+    Cinema Number: ${cinemaNumber}
+    Date: ${date}
+    Time Slots: ${timeSlots.join(', ')}
+    Total Price: ${totalPrice} PHP
+    Selected Seats and Ticket Numbers:
+    ${seatInfo.map((info) => `Seat ${info.seatNumber}: Ticket ${info.ticketNumber}`).join('\n')}
+  `);
+};
+
   return (
     <div>
       <h1>Reservation Confirmation</h1>
       <p>Date: {date}</p>
       <p>Cinema Number: {cinemaNumber}</p>
       <p>Movie Name: {movieName}</p>
-      {/* Conditionally display "Premium" paragraph if isPremium is true */}
       {isPremium ? <p>Premium: {isPremium.toString()}</p> : null}
-      <p>Time Slots: {timeSlots}</p>
+      <p>Time Slots: {timeSlots.join(', ')}</p>
       <p>Selected Seats:</p>
 
-      {/* Display each seat number with a button */}
       {seatNumbers.map((seat, index) => (
         <div key={index}>
           <button
@@ -42,15 +82,19 @@ const ReservationConfirmation = () => {
         </div>
       ))}
 
-      {/* Reservation price calculator component */}
-      <ReservationPriceCalculator seatNumbers={seatNumbers} seniorCitizenStatus={seniorCitizenStatus} isPremium={isPremium} />
+      <ReservationPriceCalculator
+        seatNumbers={seatNumbers}
+        seniorCitizenStatus={seniorCitizenStatus}
+        isPremium={isPremium}
+        onPriceChange={(newPrice) => setTotalPrice(newPrice)}
+      />
 
-      {/* Add any additional information or UI elements as needed */}
-      {/* For example, a button to proceed to the next step or submit the reservation */}
+      <button onClick={generateReservation}>Generate Reservation</button>
     </div>
   );
 };
 
 export default ReservationConfirmation;
+
 
 
