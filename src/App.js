@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import MenuPage from "./pages/MenuPage";
 import SeatLayout from "./pages/SeatLayout";
 import Movielist from "./pages/Movielist";
+import ReservationConfirmation from "./pages/ReservationConfirmation";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/menu" element={<MenuPage />}></Route>
         <Route path="/seat-layout" element={<SeatLayout />}></Route>
         <Route path="/movielist" element={<Movielist />}></Route>
+        <Route path="/confirmation" element={<ReservationConfirmation />}></Route>
       </Routes>
     </Router>
   );
