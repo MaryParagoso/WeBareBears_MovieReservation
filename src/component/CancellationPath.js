@@ -15,7 +15,7 @@ const CancellationPath = ({ selectedReservation, onReservationChange }) => {
   return (
     <Container>
       <CancelWallpaper>
-        <h1>Cancellation</h1>
+        <h1 style={{ paddingTop: "80px" }}>Cancellation</h1>
         <CancelContainer>
           <Form>
             <Form.Item label="Search and Select Reservation:">
