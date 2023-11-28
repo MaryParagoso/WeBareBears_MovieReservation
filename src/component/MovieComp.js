@@ -17,9 +17,9 @@ const CoverImage = styled.img`
 `;
 
 const MovieName = styled.span`
+  color: white;
   font-size: 18px;
   font-weight: 600;
-  color: black;
   margin: 15px 0;
   white-space: nowrap;
   text-overflow: ellipsis;
