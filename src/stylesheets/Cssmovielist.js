@@ -1,8 +1,10 @@
+// Cssmovielist.js
 import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100vh;
 `;
 
 export const Header = styled.div`
@@ -33,7 +35,7 @@ export const MovieImage = styled.img`
 export const Searchbar = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center; /* Updated to center the SearchInput vertically */
+  align-items: center;
   padding: 10px 10px;
   background-color: white;
   border-radius: 10px;
@@ -55,4 +57,23 @@ export const MovielistContainer = styled.div`
   padding: 30px;
   gap: 25px;
   justify-content: space-evenly;
+  background-color: black;
+  color: white;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  gap: 30px;
+  justify-content: space-evenly;
+  font-size: 20px;
+`;
+
+export const Button = styled.div`
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #fff; // Bright white color
+  }
 `;
