@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form, Input, Layout } from 'antd';
+
 const { Header, Content, Footer } = Layout;
 
 const overlayColor = 'rgba(0, 0, 0, 0.5)'; // Adjust the transparency as needed
@@ -45,6 +46,11 @@ const formStyle = {
   backgroundColor: 'rgba(90, 90, 90, 0.95)',
 };
 
+const inputStyle = {
+  width: '300px',
+  textAlign: 'left',
+};
+
 function Registration() {
   return (
     <div>
@@ -57,28 +63,28 @@ function Registration() {
               label="Valid Email"
               name="email"
               rules={[{ required: true, message: 'Please input your Email Address!' }]}>
-              <Input size="large" />
+              <Input size="large" style={inputStyle} />
             </Form.Item>
             <Form.Item
               label="Username"
               name="username"
               rules={[{ required: true, message: 'Please input your username!' }]}>
-              <Input size="large" />
+              <Input size="large" style={inputStyle} />
             </Form.Item>
             <Form.Item
               label="Password"
               name="password"
               rules={[{ required: true, message: 'Please input your password!' }]}>
-              <Input.Password size="large" />
+              <Input.Password size="large" style={inputStyle} />
             </Form.Item>
             <Form.Item
               label="Confirm Password"
-              name="passwordConfimation"
+              name="confirmPassword"
               rules={[{ required: true, message: 'Please input your password!' }]}>
-              <Input.Password size="large" />
+              <Input.Password size="large" style={inputStyle} />
             </Form.Item>
             <Form.Item style={{ display: 'flex', justifyContent: 'center' }}>
-              <Button ghost size="large" style={{ width: '150px', marginRight: '10px', color: '#000', borderColor: '#000' }}>
+              <Button ghost size="large" style={{ width: '150px', marginRight: '25px', color: '#000', borderColor: '#000' }}>
                 Log In
               </Button>
               <Button type="primary" size="large" htmlType="submit" style={{ width: '150px', backgroundColor: '#000' }}>
