@@ -1,55 +1,8 @@
 import React from 'react';
 import { Button, Form, Input, Layout } from 'antd';
+import {headerStyle, contentStyle, footerStyle, formStyle, inputStyle, formItem } from '../stylesheets/mainUI';
 
 const { Header, Content, Footer } = Layout;
-
-const overlayColor = 'rgba(0, 0, 0, 0.5)'; // Adjust the transparency as needed
-
-const headerStyle = {
-  textAlign: 'center',
-  color: '#fff',
-  padding: '20px',
-  background: `linear-gradient(${overlayColor}, ${overlayColor}), url("https://img.freepik.com/premium-vector/red-metal-texture-background_46250-321.jpg?w=1060")`,
-  backgroundSize: 'cover',
-  imageRendering: 'pixelated',
-  fontSize: '30px',
-  height: '92px',
-};
-
-const contentStyle = {
-  textAlign: 'center',
-  minHeight: 'calc(80vh)',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: '#1a1a1a',
-  background: `linear-gradient(${overlayColor}, ${overlayColor}), url("https://c1.wallpaperflare.com/preview/977/573/114/red-seat-cinema-theatre.jpg")`,
-  backgroundSize: 'cover',
-  imageRendering: 'pixelated',
-};
-
-const footerStyle = {
-  textAlign: 'center',
-  color: '#fff',
-  background: `linear-gradient(${overlayColor}, ${overlayColor}), url("https://img.freepik.com/premium-vector/red-metal-texture-background_46250-321.jpg?w=1060")`,
-  backgroundSize: 'cover',
-  imageRendering: 'pixelated',
-  padding: '15px',
-};
-
-const formStyle = {
-  width: '500px',
-  boxShadow: '0 4px 8px rgba(255, 255, 255, 255, 0.1)',
-  padding: '30px',
-  borderRadius: '8px',
-  backgroundColor: 'rgba(90, 90, 90, 0.95)',
-};
-
-const inputStyle = {
-  width: '300px',
-  textAlign: 'left',
-};
 
 function Registration() {
   return (
@@ -60,24 +13,28 @@ function Registration() {
           <h1 style={{ color: '#fff' }}>Create Your Account</h1>
           <Form style={formStyle}>
             <Form.Item
+              style={formItem}
               label="Valid Email"
               name="email"
               rules={[{ required: true, message: 'Please input your Email Address!' }]}>
               <Input size="large" style={inputStyle} />
             </Form.Item>
-            <Form.Item
+            <Form.Item 
+              style={formItem} 
               label="Username"
               name="username"
               rules={[{ required: true, message: 'Please input your username!' }]}>
               <Input size="large" style={inputStyle} />
             </Form.Item>
-            <Form.Item
+            <Form.Item 
+              style={formItem}
               label="Password"
               name="password"
               rules={[{ required: true, message: 'Please input your password!' }]}>
               <Input.Password size="large" style={inputStyle} />
             </Form.Item>
             <Form.Item
+              style={formItem}
               label="Confirm Password"
               name="confirmPassword"
               rules={[{ required: true, message: 'Please input your password!' }]}>
