@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import MenuScreen from '../component/MenuScreen';
-import ReservationPath from '../component/ReservationPath';
-import CancellationPath from '../component/CancellationPath';
+import React, { Component } from "react";
+import MenuScreen from "../component/MenuScreen";
+import ReservationPath from "../component/ReservationPath";
+import CancellationPath from "../component/CancellationPath";
 
 class MenuPage extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class MenuPage extends Component {
           <MenuScreen onButtonClick={this.handleButtonClick} />
         ) : (
           <div>
-            {selectedOption === 'Reserve' ? (
+            {selectedOption === "Reserve" ? (
               <ReservationPath
                 selectedDate={selectedDate}
                 onDateChange={(selectedDate) => this.setState({ selectedDate })}
