@@ -36,7 +36,7 @@ function Login() {
             </Form.Item>
           </Form>
         </Content>
-        <Footer style={footerStyle}>Created by We Bare Bears.</Footer>
+        <Footer style={footerStyle}>Ant Design ©2023 Created by We Bare Bears</Footer>
       </Layout>
     </div>
   );
