@@ -1,10 +1,12 @@
 import React from "react";
-import {headerStyle, contentStyle, footerStyle, formStyle, inputStyle } from '../stylesheets/mainUI';
+
+import Test from "../test/test";
 
 function Landing() {
   return (
     <div>
       landing
+      <Test />
     </div>
   );
 }
