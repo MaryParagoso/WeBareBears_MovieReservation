@@ -1,9 +1,11 @@
+// SeatLayout.js
 import React, { useState } from 'react';
 import SeatMap from '../component/SeatMap';
 import seatData from '../component/SeatData';
 
 const SeatLayout = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
+  const bookedSeats = ['A4', 'B2', 'C1']; // Replace this with your actual booked seats from the database
 
   const handleSeatClick = (selectedSeat) => {
     setSelectedSeats((prevSelectedSeats) =>
@@ -23,11 +25,12 @@ const SeatLayout = () => {
   return (
     <div>
       <h1>Seat Map</h1>
-      <SeatMap seatData={seatData} onSeatClick={handleSeatClick} />
+      <SeatMap seatData={seatData} onSeatClick={handleSeatClick} bookedSeats={bookedSeats} />
       <button onClick={handleProceedClick}>Proceed</button>
-    </div>
+    </div> 
   );
 };
 
 export default SeatLayout;
+
 
