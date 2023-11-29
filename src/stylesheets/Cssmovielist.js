@@ -14,7 +14,7 @@ export const Header = styled.div`
   background-color: black;
   color: white;
   padding: 20px;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
   box-shadow: 0 3px 6px 0 #555;
   align-items: center;
@@ -45,8 +45,8 @@ export const Searchbar = styled.div`
 `;
 
 export const SearchIcon = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   padding: 3px;
 `;
 
@@ -71,9 +71,10 @@ export const ButtonContainer = styled.div`
 export const Button = styled.div`
   cursor: pointer;
   color: white;
-  transition: color 0.3s;
+  transition: color 0.3s, backdrop-filter 0.3s;
 
   &:hover {
-    color: #fff; // Bright white color
+    color: #fff;
+    backdrop-filter: blur(5px);
   }
 `;
