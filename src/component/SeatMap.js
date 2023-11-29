@@ -17,18 +17,20 @@ const generateSeatData = () => {
   return seatData;
 };
 
-const SeatMap = ({ onSeatClick }) => {
+const SeatMap = ({ onSeatClick, bookedSeats }) => {
   const [seats, setSeats] = useState(generateSeatData());
 
   const handleSeatClick = (rowIndex, columnIndex) => {
     const updatedSeats = [...seats];
-    updatedSeats[rowIndex][columnIndex].availability =
-      updatedSeats[rowIndex][columnIndex].availability === 'available' ? 'booked' : 'available';
+    const seat = updatedSeats[rowIndex][columnIndex];
+
+    // Toggle between 'available' and 'selected'
+    seat.availability = seat.availability === 'available' ? 'selected' : 'available';
+
     setSeats(updatedSeats);
 
     // Pass the seat information to the parent component
-    const seatInfo = updatedSeats[rowIndex][columnIndex];
-    onSeatClick(seatInfo);
+    onSeatClick(seat);
   };
 
   return (
@@ -38,10 +40,16 @@ const SeatMap = ({ onSeatClick }) => {
           {row.map((seat, columnIndex) => (
             <Button
               key={seat.seat_name}
-              type={seat.availability === 'booked' ? 'danger' : 'primary'}
-              disabled={seat.availability === 'booked'}
+              type={
+                seat.availability === 'selected'
+                  ? 'danger'
+                  : bookedSeats.includes(seat.seat_name)
+                  ? 'default'
+                  : 'primary'
+              }
               className="seat"
               onClick={() => handleSeatClick(rowIndex, columnIndex)}
+              disabled={bookedSeats.includes(seat.seat_name)}
             >
               {seat.seat_name}
             </Button>
@@ -53,4 +61,5 @@ const SeatMap = ({ onSeatClick }) => {
 };
 
 export default SeatMap;
+
 
