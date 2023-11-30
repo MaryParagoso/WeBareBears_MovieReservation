@@ -40,6 +40,9 @@ const MenuScreen = ({ onButtonClick }) => {
         textAlign: "center",
         height: "100vh",
         backgroundImage: `url("https://raw.githubusercontent.com/kishan0725/AJAX-Movie-Recommendation-System-with-Sentiment-Analysis/master/static/image.jpg")`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center ",
       }}
     >
       <div
@@ -58,8 +61,16 @@ const MenuScreen = ({ onButtonClick }) => {
           icon={<ArrowLeftOutlined />}
           onClick={handleBackButtonClick}
         ></Button>
+        <div style={{ padding: "40px" }}></div>
       </div>
-      <h1 style={{ color: "white", paddingTop: "200px", fontSize: "40px" }}>
+      <h1
+        style={{
+          color: "white",
+          fontSize: "40px",
+          border: "1px solid red",
+          backgroundColor: "rgba(255, 0, 0, 0.51)",
+        }}
+      >
         Would you like to make a Reservation or Cancel?
       </h1>
       <div style={{ paddingTop: "30px" }}>
