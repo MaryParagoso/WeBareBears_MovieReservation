@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import CancellationPath from "./CancellationPath";
+import ReservationPath from "./ReservationPath";
 
 const MenuScreen = ({ onButtonClick }) => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -17,8 +18,16 @@ const MenuScreen = ({ onButtonClick }) => {
   if (selectedOption === "Cancel") {
     return (
       <CancellationPath
-        selectedReservation={null} // Add your state for selectedReservation here
+        selectedReservation={null}
         onReservationChange={() => {}}
+        onBackButtonClick={handleBackButtonClick}
+      />
+    );
+  } else if (selectedOption === "Reserve") {
+    return (
+      <ReservationPath
+        selectedDate={null}
+        onDateChange={() => {}}
         onBackButtonClick={handleBackButtonClick}
       />
     );

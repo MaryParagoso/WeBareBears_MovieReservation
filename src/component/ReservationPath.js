@@ -6,7 +6,7 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
-const ReservationPath = ({ selectedDate, onDateChange }) => {
+const ReservationPath = ({ selectedDate, onDateChange, onBackButtonClick }) => {
   const generateDateOptions = () => {
     const today = new Date();
     const dateOptions = [];
@@ -19,10 +19,6 @@ const ReservationPath = ({ selectedDate, onDateChange }) => {
     }
 
     return dateOptions;
-  };
-
-  const handleBackButtonClick = () => {
-    console.log("Back button clicked");
   };
 
   return (
@@ -42,7 +38,7 @@ const ReservationPath = ({ selectedDate, onDateChange }) => {
             }}
             type="default"
             icon={<ArrowLeftOutlined />}
-            onClick={() => handleBackButtonClick()} // Define the back button click handler
+            onClick={onBackButtonClick} // Use the provided back button click handler
           ></Button>
         </div>
         <h1
