@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// src/pages/Movielist.js
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Header,
@@ -10,13 +11,32 @@ import {
   ButtonContainer,
   Button,
 } from "../stylesheets/Cssmovielist";
+import axios from 'axios';
 import SearchInput from "../component/SearchInput";
 import MovieComponent from "../component/MovieComp";
-import { moviesData } from "../component/MoviesData";
+import movieApi from "../apicalls/movieApi";
 
 function Movielist() {
-  const [searchQuery, updateSearchQuery] = useState("");
+  const [movies, setMovies] = useState([]);
+  const [searchQuery, updateSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+
+// src/pages/Movielist.js
+useEffect(() => {
+  const fetchMovies = async () => {
+    try {
+      const moviesData = await movieApi.getMovies();
+      console.log('Movies Data:', moviesData); // Add this line
+      setMovies(moviesData);
+    } catch (error) {
+      console.error('Error fetching movies:', error);
+      // Handle error
+    }
+  };
+
+  fetchMovies();
+}, []);
+
 
   const onTextChange = (event) => {
     updateSearchQuery(event.target.value);
@@ -27,11 +47,9 @@ function Movielist() {
   };
 
   const itemsPerPage = 10;
-
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
-  const displayedMovies = moviesData.slice(startIndex, endIndex);
+  const displayedMovies = movies.slice(startIndex, endIndex);
 
   return (
     <Container>
