@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Form, Input, Layout } from 'antd';
-import {headerStyle, contentStyle, footerStyle, formStyle, inputStyle, formItem } from '../stylesheets/mainUI';
+import {sectionTitle, headerStyle, contentStyle, footerStyle, formStyle, inputStyle, formItem, buttonStyle, buttonLoginR,  buttonSignupR} from '../stylesheets/mainUI';
 
 const { Header, Content, Footer } = Layout;
 
@@ -8,10 +8,10 @@ function Registration() {
   return (
     <div>
       <Layout>
-        <Header style={headerStyle}>We Bare Bears</Header>
+        <Header style={headerStyle}>Movie Reservation System</Header>
         <Content style={contentStyle}>
-          <h1 style={{ color: '#fff' }}>Create Your Account</h1>
           <Form style={formStyle}>
+            <h1 style={sectionTitle}>Create Your Account</h1>
             <Form.Item
               style={formItem}
               label="Valid Email"
@@ -40,11 +40,11 @@ function Registration() {
               rules={[{ required: true, message: 'Please input your password!' }]}>
               <Input.Password size="large" style={inputStyle} />
             </Form.Item>
-            <Form.Item style={{ display: 'flex', justifyContent: 'center' }}>
-              <Button ghost size="large" style={{ width: '150px', marginRight: '25px', color: '#000', borderColor: '#000' }}>
+            <Form.Item style={buttonStyle}>
+              <Button ghost size="large" style={buttonLoginR}>
                 Log In
               </Button>
-              <Button type="primary" size="large" htmlType="submit" style={{ width: '150px', backgroundColor: '#000' }}>
+              <Button type="primary" size="large" htmlType="submit" style={buttonSignupR}>
                 Sign Up
               </Button>
             </Form.Item>
