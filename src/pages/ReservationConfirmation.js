@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { Layout } from 'antd';
+import { contentStyle, breadcrumbStyle } from '../stylesheets/layout';
 import { ReservationDetails } from '../component/ReservationDetails';
 import ReservationPriceCalculator from '../component/ReservationPriceCalculator';
 import UniqueIDGenerator from '../component/UniqueIDGenerator';
+
+const { Content } = Layout;
 
 const ReservationConfirmation = () => {
   // Destructure values from ReservationDetails
@@ -63,34 +67,40 @@ const generateReservation = () => {
 
   return (
     <div>
-      <h1>Reservation Confirmation</h1>
-      <p>Date: {date}</p>
-      <p>Cinema Number: {cinemaNumber}</p>
-      <p>Movie Name: {movieName}</p>
-      {isPremium ? <p>Premium: {isPremium.toString()}</p> : null}
-      <p>Time Slots: {timeSlots.join(', ')}</p>
-      <p>Selected Seats:</p>
+      <Layout>
+        <Content style={contentStyle}>
+          <div style={breadcrumbStyle}>
+            <h1>Reservation Confirmation</h1>
+          </div>
+          <p>Date: {date}</p>
+          <p>Cinema Number: {cinemaNumber}</p>
+          <p>Movie Name: {movieName}</p>
+          {isPremium ? <p>Premium: {isPremium.toString()}</p> : null}
+          <p>Time Slots: {timeSlots.join(', ')}</p>
+          <p>Selected Seats:</p>
 
-      {seatNumbers.map((seat, index) => (
-        <div key={index}>
-          <button
-            onClick={() => handleSeatButtonClick(index)}
-            style={{ backgroundColor: seniorCitizenStatus[index] ? 'gold' : 'transparent' }}
-          >
-            {seat.seatNumber} {seniorCitizenStatus[index] ? '(Senior Citizen)' : ''}
-          </button>
-        </div>
-      ))}
+          {seatNumbers.map((seat, index) => (
+            <div key={index}>
+              <button
+                onClick={() => handleSeatButtonClick(index)}
+                style={{ backgroundColor: seniorCitizenStatus[index] ? 'gold' : 'transparent' }}
+              >
+                {seat.seatNumber} {seniorCitizenStatus[index] ? '(Senior Citizen)' : ''}
+              </button>
+            </div>
+          ))}
 
-      <ReservationPriceCalculator
-        seatNumbers={seatNumbers}
-        seniorCitizenStatus={seniorCitizenStatus}
-        isPremium={isPremium}
-        onPriceChange={(newPrice) => setTotalPrice(newPrice)}
-      />
+          <ReservationPriceCalculator
+            seatNumbers={seatNumbers}
+            seniorCitizenStatus={seniorCitizenStatus}
+            isPremium={isPremium}
+            onPriceChange={(newPrice) => setTotalPrice(newPrice)}
+          />
 
-      <button onClick={generateReservation}>Generate Reservation</button>
-    </div>
+          <button onClick={generateReservation}>Generate Reservation</button>
+        </Content>
+      </Layout>
+          </div>
   );
 };
 

@@ -10,6 +10,22 @@ const contentStyle = {
   boxShadow: 'inset 0 0 100px rgba(0, 0, 0, 0.5)', 
 };
 
+const centerContent = { 
+  display: 'flex', 
+  flexDirection: 'column', 
+  justifyContent: 'center', 
+  alignItems: 'center', 
+  minHeight: '100vh' 
+}
+
+const Context1 = { 
+  fontSize: '75px' 
+}
+
+const Context2 = { 
+  fontSize: '35px' 
+}
+
 const breadcrumbStyle = {
   position: 'fixed',
   top: '0',
@@ -61,7 +77,6 @@ const buttonLogin = {
   marginRight: '50px', 
   color: '#b20710', 
   borderColor: '#b20710', 
-  // backgroundColor: 'white', 
   background: 'rgba(255, 255, 255, 0.5)',
   backdropFilter: 'blur(5px)',
 }
@@ -75,4 +90,7 @@ const buttonSignup = {
   backdropFilter: 'blur(5px)',
 }
 
-export { overlayColor, overlayColor2, contentStyle, breadcrumbStyle, breadcrumbContent, siteLayoutContent, footerStyle, buttonLogin, buttonSignup };
+export { overlayColor, overlayColor2, contentStyle, 
+  centerContent, Context1, Context2, breadcrumbStyle, 
+  breadcrumbContent, siteLayoutContent, footerStyle, 
+  buttonLogin, buttonSignup };

@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Breadcrumb, Button } from 'antd';
-import { contentStyle, breadcrumbStyle, buttonLogin, buttonSignup } from '../stylesheets/landingUI';
+import { contentStyle, centerContent, Context1, Context2, breadcrumbStyle, buttonLogin, buttonSignup } from '../stylesheets/layout';
 
 const { Content } = Layout;
 
@@ -14,9 +14,9 @@ function Landing() {
             <Breadcrumb.Item>List</Breadcrumb.Item>
             <Breadcrumb.Item>App</Breadcrumb.Item>
           </Breadcrumb>
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-            <h1 style={{ fontSize: '75px' }}>Welcome to Our Website</h1>
-            <p style={{ fontSize: '35px' }}>Explore amazing content and more!</p>
+          <div style={centerContent}>
+            <h1 style={Context1}>Welcome to Our Website</h1>
+            <p style={Context2}>Explore amazing content and more!</p>
             <div>
               <Button ghost size="large" style={buttonLogin}>
                 Log In
