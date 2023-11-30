@@ -7,17 +7,25 @@ const contentStyle = {
   minHeight: 'calc(100vh)',
   color: 'white',
   background: `linear-gradient(${overlayColor}, ${overlayColor}), url("${backgroundImageUrl}")`,
-  boxShadow: 'inset 0 0 100px rgba(0, 0, 0, 0.5)', // Added box shadow
+  boxShadow: 'inset 0 0 100px rgba(0, 0, 0, 0.5)', 
 };
 
 const breadcrumbStyle = {
+  position: 'fixed',
+  top: '0',
+  left: '0',
+  right: '0',
+  width: '100%',
   padding: '20px',
-  margin: '20px 0',
   color: 'white',
+  height: '90px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   fontSize: '25px',
+  background: 'rgba(255, 0, 0, 0.5)',
+  backdropFilter: 'blur(4px)',
+  border: '1px solid rgba(255, 255, 255, 0.3)',
 };
 
 const breadcrumbContent = {
@@ -25,7 +33,7 @@ const breadcrumbContent = {
   color: 'white',
   fontSize: '50px',
   textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
-};  
+};
 
 const siteLayoutContent = {
   background: `
@@ -46,4 +54,25 @@ const footerStyle = {
   padding: '15px',
 };
 
-export { overlayColor, overlayColor2, contentStyle, breadcrumbStyle, breadcrumbContent, siteLayoutContent, footerStyle };
+const buttonLogin = {
+  fontSize: '25px', 
+  width: '250px', 
+  height: '60px', 
+  marginRight: '50px', 
+  color: '#b20710', 
+  borderColor: '#b20710', 
+  // backgroundColor: 'white', 
+  background: 'rgba(255, 255, 255, 0.5)',
+  backdropFilter: 'blur(5px)',
+}
+
+const buttonSignup = {
+  fontSize: '25px', 
+  width: '250px', 
+  height: '60px', 
+  backgroundColor: '#b20710', 
+  background: 'rgba(255, 0, 0, 0.4)',
+  backdropFilter: 'blur(5px)',
+}
+
+export { overlayColor, overlayColor2, contentStyle, breadcrumbStyle, breadcrumbContent, siteLayoutContent, footerStyle, buttonLogin, buttonSignup };
