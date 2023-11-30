@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Layout } from 'antd';
-import { contentStyle, breadcrumbStyle } from '../stylesheets/layout';
+import { contentStyle, centerContent, highlight, reservationButton, Context, Context2 } from '../stylesheets/layout';
 import { ReservationDetails } from '../component/ReservationDetails';
 import ReservationPriceCalculator from '../component/ReservationPriceCalculator';
 import UniqueIDGenerator from '../component/UniqueIDGenerator';
@@ -68,39 +68,53 @@ const generateReservation = () => {
   return (
     <div>
       <Layout>
-        <Content style={contentStyle}>
-          <div style={breadcrumbStyle}>
-            <h1>Reservation Confirmation</h1>
+      <Content style={contentStyle}>
+          <div style={centerContent}>
+            <h1 style={Context2}>Reservation Confirmation</h1>
+            <div style={highlight}>
+              <p style={Context}>Date: {date}</p>
+              <p style={Context}>Cinema Number: {cinemaNumber}</p>
+              <p style={Context}>Movie Name: {movieName}</p>
+              {isPremium ? <p>Premium: {isPremium.toString()}</p> : null}
+              <p style={Context}>Time Slots: {timeSlots.join(', ')}</p>
+              </div>
+            <p style={Context2}>Selected Seats:</p>
+
+            {seatNumbers.map((seat, index) => (
+              <div key={index}>
+                <button
+                  onClick={() => handleSeatButtonClick(index)}
+                  style={{ 
+                    backgroundColor: seniorCitizenStatus[index] ? 'maroon' : 'transparent',
+                    fontSize: '23px',
+                    width: '250px',
+                    height: '40px',
+                    color: '#b20710',
+                    borderColor: '#b20710',
+                    background: 'rgba(255, 255, 255, 0.4)',
+                    backdropFilter: 'blur(10px)',
+                    borderRadius: '10px',
+                    margin:'1px',
+                  }}
+                >
+                  {seat.seatNumber} {seniorCitizenStatus[index] ? '(Senior Citizen)' : ''}
+                </button>
+              </div>
+            ))}
+
+            <ReservationPriceCalculator
+              seatNumbers={seatNumbers}
+              seniorCitizenStatus={seniorCitizenStatus}
+              isPremium={isPremium}
+              onPriceChange={(newPrice) => setTotalPrice(newPrice)}
+            />
+            <button onClick={generateReservation} style={reservationButton}>
+              Generate Reservation
+            </button>
           </div>
-          <p>Date: {date}</p>
-          <p>Cinema Number: {cinemaNumber}</p>
-          <p>Movie Name: {movieName}</p>
-          {isPremium ? <p>Premium: {isPremium.toString()}</p> : null}
-          <p>Time Slots: {timeSlots.join(', ')}</p>
-          <p>Selected Seats:</p>
-
-          {seatNumbers.map((seat, index) => (
-            <div key={index}>
-              <button
-                onClick={() => handleSeatButtonClick(index)}
-                style={{ backgroundColor: seniorCitizenStatus[index] ? 'gold' : 'transparent' }}
-              >
-                {seat.seatNumber} {seniorCitizenStatus[index] ? '(Senior Citizen)' : ''}
-              </button>
-            </div>
-          ))}
-
-          <ReservationPriceCalculator
-            seatNumbers={seatNumbers}
-            seniorCitizenStatus={seniorCitizenStatus}
-            isPremium={isPremium}
-            onPriceChange={(newPrice) => setTotalPrice(newPrice)}
-          />
-
-          <button onClick={generateReservation}>Generate Reservation</button>
         </Content>
       </Layout>
-          </div>
+    </div>
   );
 };
 
