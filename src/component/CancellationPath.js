@@ -56,7 +56,9 @@ const CancellationPath = ({
             justifyContent: "center",
           }}
         >
-          <CancelContainer style={{ alignItems: "center" }}>
+          <CancelContainer
+            style={{ alignItems: "center", border: "1px red solid"}}
+          >
             <Form>
               <Form.Item
                 label="Search and Select Reservation:"
